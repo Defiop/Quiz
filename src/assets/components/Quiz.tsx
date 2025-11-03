@@ -1,7 +1,18 @@
 import React, { useState } from "react";
+import { questions } from "./../../data/questions";
+
+function snuffleAndPickFive(arr: typeof questions) {
+  const snuffled = [...arr].sort(() => 0.5 - Math.random());
+  return snuffled.slice(0, 5);
+}
 
 const Quiz = () => {
   const [showResult, setShowResult] = useState(false);
+  const [quizQuestions, setQuizQuestions] = useState(() =>
+    snuffleAndPickFive(questions)
+  );
+  const [currentQuistionIndex, setCurrentQuiestionIndex] = useState(0);
+  const currentQuistion = quizQuestions[currentQuistionIndex];
   if (showResult) {
     return (
       <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
@@ -45,7 +56,7 @@ const Quiz = () => {
               Next
             </button>
             <div className="text-gray-600 text-sm text-center">
-              Question 1 of 5
+              Question 1 of 53
             </div>
           </div>
         </div>
