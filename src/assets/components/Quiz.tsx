@@ -18,7 +18,7 @@ const Quiz = () => {
       <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
         <div className="bg-white max-w-lg p-6 w-full shadow-lg rounded-lg text-center">
           <h1 className="text-2xl font-bold text-[#001e4d] mb-6 text-center">
-            Quiz Completed
+            Quiz Completedd
           </h1>
           <p className="text-lg mb-6">
             Your Score: <strong>2 </strong>out of 5
