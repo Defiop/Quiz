@@ -14,6 +14,19 @@ const Quiz = () => {
   const [currentQuistionIndex, setCurrentQuiestionIndex] = useState(0);
   const currentQueistion = quizQuestions[currentQuistionIndex];
 
+  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
+  const handleAnswer = (selecedOption: string) => {
+    setSelectedAnswer(selecedOption);
+
+    const isCorrect = selecedOption === currentQueistion.answer;
+
+    if (isCorrect) {
+      setScore((prevScore) => prevScore + 1);
+    }
+  };
+
   if (showResult) {
     return (
       <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
@@ -41,10 +54,15 @@ const Quiz = () => {
         </h2>
         <div className="grid gap-6 mb-6">
           {currentQueistion.options.map((option, index) => {
+            const isSelected = selectedAnswer === option;
             return (
               <button
+                disabled={!!selectedAnswer}
+                onClick={() => handleAnswer(option)}
                 key={index}
-                className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
+                className={`text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300 ${
+                  isSelected ? "bg-green-400" : ""
+                }`}>
                 {option}
               </button>
             );
