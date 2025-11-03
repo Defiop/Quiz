@@ -35,7 +35,7 @@ const Quiz = () => {
   return (
     <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
       <div className="bg-white max-w-lg p-6 w-full rounded-lg">
-        <h1 className="text-2xl font-bold text-[#001e4d] mb-6">Simple Quiz</h1>
+        <h1 className="text-2xl font-bold text-[#001e4d] mb-6">Simple Quizz</h1>
         <h2 className="text-xl font-semibold mb-2">
           {currentQueistion.question}
         </h2>
