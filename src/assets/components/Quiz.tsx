@@ -12,7 +12,8 @@ const Quiz = () => {
     snuffleAndPickFive(questions)
   );
   const [currentQuistionIndex, setCurrentQuiestionIndex] = useState(0);
-  const currentQuistion = quizQuestions[currentQuistionIndex];
+  const currentQueistion = quizQuestions[currentQuistionIndex];
+
   if (showResult) {
     return (
       <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
@@ -36,21 +37,18 @@ const Quiz = () => {
       <div className="bg-white max-w-lg p-6 w-full rounded-lg">
         <h1 className="text-2xl font-bold text-[#001e4d] mb-6">Simple Quiz</h1>
         <h2 className="text-xl font-semibold mb-2">
-          What is the capital of France?
+          {currentQueistion.question}
         </h2>
         <div className="grid gap-6 mb-6">
-          <button className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
-            Berlin
-          </button>
-          <button className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
-            Paris
-          </button>
-          <button className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
-            Madrid
-          </button>
-          <button className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
-            Logos
-          </button>
+          {currentQueistion.options.map((option, index) => {
+            return (
+              <button
+                key={index}
+                className="text-left bg-gray-200 px-4 py-3 rounded-lg cursor-pointer text-xl hover:bg-blue-300">
+                {option}
+              </button>
+            );
+          })}
           <div className="flex flex-col items-center justify-center gap-3">
             <button className="bg-[#001e4d] text-white px-8 py-2 text-xl cursor-pointer">
               Next
