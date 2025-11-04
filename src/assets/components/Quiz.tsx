@@ -27,6 +27,17 @@ const Quiz = () => {
     }
   };
 
+  const handleNext = () => {
+    if (!selectedAnswer) return;
+    const nextIndex = currentQuistionIndex + 1;
+    if (nextIndex < quizQuestions.length) {
+      setCurrentQuiestionIndex(nextIndex);
+      setSelectedAnswer(null);
+    } else {
+      setShowResult(true);
+    }
+  };
+
   if (showResult) {
     return (
       <div className="h-screen bg-[#001e4d] flex justify-center items-center p-4">
@@ -35,7 +46,7 @@ const Quiz = () => {
             Quiz Completedd
           </h1>
           <p className="text-lg mb-6">
-            Your Score: <strong>2 </strong>out of 5
+            Your Score: <strong>{score} </strong>out of 5
           </p>
           <button className="rounded-lg bg-green-500 p-2 text-white">
             Restart Quiz
@@ -68,11 +79,13 @@ const Quiz = () => {
             );
           })}
           <div className="flex flex-col items-center justify-center gap-3">
-            <button className="bg-[#001e4d] text-white px-8 py-2 text-xl cursor-pointer">
+            <button
+              onClick={handleNext}
+              className="bg-[#001e4d] text-white px-8 py-2 text-xl cursor-pointer">
               Next
             </button>
             <div className="text-gray-600 text-sm text-center">
-              Question 1 of 53
+              Question {currentQuistionIndex + 1} of {quizQuestions.length}
             </div>
           </div>
         </div>
